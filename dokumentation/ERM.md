@@ -45,6 +45,7 @@ erDiagram
     }
 
     Lagerbestand {
+        int Lagerbestand PK
         int LagerortID FK
         int ArtikelID FK
         int Menge
@@ -60,6 +61,7 @@ erDiagram
     }
 
     Rechnungsposition {
+        int Rechnungsposition PK
         int RechnungsID FK
         int ArtikelID FK
         int Menge
