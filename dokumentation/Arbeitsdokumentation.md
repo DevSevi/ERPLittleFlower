@@ -27,16 +27,47 @@ Ein erster Entwurf des Ablaufs der Arbeit sieht folgendermassen aus:
 
 ### Planung und Controlling
 
-| Aktivität         | Soll-Datum | Ist-Datum  | Delta | Erklärung                       |
-| ----------------- | ---------- | ---------- | ----- | ------------------------------- |
-| Planung erstellen | 19.06.2026 | 19.06.2026 | 0     | alles klar                      |
-| ERM erstellen     | 19.06.2026 | 26.06.2026 | 7     | bisschen komplexer als erwartet |
-|                   |            |            |       |                                 |
-|                   |            |            |       |                                 |
-|                   |            |            |       |                                 |
-|                   |            |            |       |                                 |
-|                   |            |            |       |                                 |
-|                   |            |            |       |                                 |
+| Aktivität                        | Soll-Datum | Ist-Datum  | Delta | Erklärung                       |
+| -------------------------------- | ---------- | ---------- | ----- | ------------------------------- |
+| Planung erstellen                | 19.06.2025 | 19.06.2025 | 0     | alles klar                      |
+| ERM erstellen                    | 19.06.2025 | 26.06.2025 | 7     | bisschen komplexer als erwartet |
+| Situationsanalyse                | 03.07.2025 |            |       |                                 |
+| Zielsetzungen                    | 03.07.2025 |            |       |                                 |
+| PM Lösungssuche und -bewertung   | 03.07.2025 |            |       |                                 |
+| Earned Value Analyse             | 03.07.2025 |            |       |                                 |
+| Planung Zusammenspiel Code / SQL | 14.08.2025 |            |       |                                 |
+| Erste Umsetzung                  | 04.09.2025 |            |       |                                 |
+| Verbesserungen                   | 11.09.2025 |            |       |                                 |
+| Dokumentation nachführen         | 18.09.2025 |            |       |                                 |
+| Abgabe                           | 25.09.2025 |            |       |                                 |
+
+### Gantt-Diagramm
+
+```mermaid
+gantt
+    title Projektzeitplan (Soll-Daten)
+    dateFormat  YYYY-MM-DD
+    axisFormat  %d.%m.%Y
+
+    section Planung
+    Planung erstellen                :done, plan1, 2025-06-19, 7d
+    ERM erstellen                    :done, plan2, 2025-06-19, 7d
+
+    section Analyse & Zielsetzung
+    Situationsanalyse                :plan3, 2025-07-03, 7d
+    Zielsetzungen                    :plan4, 2025-07-03, 7d
+    PM Lösungssuche und -bewertung  :plan5, 2025-07-03, 7d
+    Earned Value Analyse             :plan6, 2025-07-03, 7d
+
+    section Umsetzung
+    Planung Code/SQL                 :plan7, 2025-08-14, 7d
+    Erste Umsetzung                  :plan8, 2025-09-04, 7d
+    Verbesserungen                   :plan9, 2025-09-11, 7d
+
+    section Abschluss
+    Dokumentation nachführen        :plan10, 2025-09-18, 7d
+    Abgabe                           :plan11, 2025-09-25, 7d
+```
 
 ## ERM
 
