@@ -1,10 +1,10 @@
 # Arbeitsdokumentation
 
-In dieser Arbeit geht es darum, ein ERP-System aufzubauen, inkl. ERM-Modellierung, Aufbau Datenbank in SQL-Server und Umsetzung mit Testfällen. Allenfalls werde ich gegen Schluss auch noch ein einfaches GUI dazu programmieren. Der Fokus liegt jedoch klar auf dem Aufbau der Datenbank.
+In dieser Arbeit geht es darum, ein ERP-System aufzubauen, inkl. ERM-Modellierung, Aufbau Datenbank in SQL-Server und Umsetzung mit Testfällen. Allenfalls werde ich gegen Schluss auch noch ein einfaches GUI dazu programmieren. Der Fokus liegt jedoch klar auf dem Aufbau der Datenbank und der Dokumentation.
 
-## Ablauf
+## Projektmanagement
 
-### Entwurf
+### Planungsentwurf
 
 Ein erster Entwurf des Ablaufs der Arbeit sieht folgendermassen aus:
 
@@ -24,6 +24,33 @@ Ein erster Entwurf des Ablaufs der Arbeit sieht folgendermassen aus:
    4.1 Verbindung zu DB wie?
 5. GUI
    5.1 evtl. mit Blazor?
+
+### Situationsanalyse LittleFlower
+
+Die Firma LittleFlower hat ihren Fokus und ihre Stärke ganz klar auf der kreativen Seite. Super Ideen und schöne Umsetzungen. Was das Administrative anbelangt, wird alles von Hand auf Notizzettel geschrieben - Bestellungen, Rechnungen, Kundendaten, Lieferantendaten etc. Das ist klar ein Problem in der heutigen Zeit. So werden Aufträge vergessen, nicht alles Geld wird eingefordert und die Steuerverwaltung ist nicht zufrieden mit der Buchhaltung.
+
+### Zielsetzungen
+
+Wen interessiert eine Verbesserung?
+
+| Stakeholder     | Interesse & Einfluss                                  |
+| --------------- | ----------------------------------------------------- |
+| Inhaber         | Finanzieller Erfolg                                   |
+| Mitarbeitende   | Gute Arbeitsbedingungen, sicherer Job, klare Prozesse |
+| IT/Technik-Team | Wartbare Systeme, gute Tools, stabile Infrastruktur   |
+
+Funktionale Ziele:
+
+| Modul         | Ziel                                                         |
+| ------------- | ------------------------------------------------------------ |
+| Finanzmodul   | Kreditoren und Debitoren können erfasst und verwaltet werden |
+| Finanzmodul   | Umsatz pro Artikel kann generiert werden                     |
+| Lagermodul    | Lagerort kann definiert werden                               |
+| Lagermodul    | Lagermenge pro Artikel kann verwaltet werden                 |
+| Einkaufsmodul | Lieferanten können verwaltet werden                          |
+| Einkaufsmodul | Artikelbestellungen können verwaltet werden                  |
+
+### Lösungssuche und -bewertung
 
 ### Planung und Controlling
 
@@ -54,7 +81,7 @@ gantt
     ERM erstellen                    :done, plan2, 2025-06-19, 7d
 
     section Analyse & Zielsetzung
-    Situationsanalyse                :plan3, 2025-07-03, 7d
+    Situationsanalyse                :plan4, 2025-07-03, 7d
     Zielsetzungen                    :plan4, 2025-07-03, 7d
     PM Lösungssuche und -bewertung  :plan5, 2025-07-03, 7d
     Earned Value Analyse             :plan6, 2025-07-03, 7d
