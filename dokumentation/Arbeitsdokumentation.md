@@ -4,6 +4,8 @@ In dieser Arbeit geht es darum, ein ERP-System aufzubauen, inkl. ERM-Modellierun
 
 ## Ablauf
 
+### Entwurf
+
 Ein erster Entwurf des Ablaufs der Arbeit sieht folgendermassen aus:
 
 1. ERM
@@ -22,6 +24,19 @@ Ein erster Entwurf des Ablaufs der Arbeit sieht folgendermassen aus:
    4.1 Verbindung zu DB wie?
 5. GUI
    5.1 evtl. mit Blazor?
+
+### Planung und Controlling
+
+| Aktivität         | Soll-Datum | Ist-Datum  | Delta | Erklärung                       |
+| ----------------- | ---------- | ---------- | ----- | ------------------------------- |
+| Planung erstellen | 19.06.2026 | 19.06.2026 | 0     | alles klar                      |
+| ERM erstellen     | 19.06.2026 | 26.06.2026 | 7     | bisschen komplexer als erwartet |
+|                   |            |            |       |                                 |
+|                   |            |            |       |                                 |
+|                   |            |            |       |                                 |
+|                   |            |            |       |                                 |
+|                   |            |            |       |                                 |
+|                   |            |            |       |                                 |
 
 ## ERM
 
@@ -64,6 +79,87 @@ flowchart TD
     L1 -->|Bestand zu niedrig| E1 --> E2 --> E3 --> E4 --> E5 --> L4
 ```
 
-### Modell
+### ERD
 
-[ERM](ERM.md)
+evtl. noch vereinfachen
+
+```mermaid
+erDiagram
+    Kunde ||--o{ Rechnung : hat
+    Rechnung ||--|{ Rechnungsposition : besteht_aus
+    Artikel ||--o{ Rechnungsposition : ist_in
+    Artikel ||--o{ Lagerbestand : hat
+    Lagerort ||--o{ Lagerbestand : beinhaltet
+    Lieferant ||--o{ Bestellung : erhaelt
+    Bestellung ||--|{ Bestellposition : beinhaltet
+    Artikel ||--o{ Bestellposition : ist_in
+
+    Kunde {
+        int KundenID PK
+        string Name
+        string Adresse
+        string Email
+        string Telefon
+    }
+
+    Lieferant {
+        int LieferantenID PK
+        string Name
+        string Adresse
+        string Email
+        string Telefon
+    }
+
+    Artikel {
+        int ArtikelID PK
+        string Bezeichnung
+        string Beschreibung
+        float Verkaufspreis
+        float Einkaufspreis
+        string Einheit
+    }
+
+    Lagerort {
+        int LagerortID PK
+        string Bezeichnung
+        string Standort
+    }
+
+    Lagerbestand {
+        int Lagerbestand PK
+        int LagerortID FK
+        int ArtikelID FK
+        int Menge
+        date LetzteInventur
+    }
+
+    Rechnung {
+        int RechnungsID PK
+        int KundenID FK
+        date Rechnungsdatum
+        boolean Bezahlt
+        int Mahnstufe
+    }
+
+    Rechnungsposition {
+        int Rechnungsposition PK
+        int RechnungsID FK
+        int ArtikelID FK
+        int Menge
+        float Einzelpreis
+    }
+
+    Bestellung {
+        int BestellungsID PK
+        int LieferantenID FK
+        date Bestelldatum
+        string Status
+    }
+
+    Bestellposition {
+        int BestellungsID FK
+        int ArtikelID FK
+        int Menge
+        float Preis
+    }
+```
