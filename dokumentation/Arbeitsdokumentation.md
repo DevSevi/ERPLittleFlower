@@ -31,7 +31,7 @@ Die Firma LittleFlower hat ihren Fokus und ihre Stärke ganz klar auf der kreati
 
 ### Zielsetzungen
 
-Wen interessiert eine Verbesserung?
+**Wen interessiert eine Verbesserung?**
 
 | Stakeholder     | Interesse & Einfluss                                  |
 | --------------- | ----------------------------------------------------- |
@@ -39,7 +39,7 @@ Wen interessiert eine Verbesserung?
 | Mitarbeitende   | Gute Arbeitsbedingungen, sicherer Job, klare Prozesse |
 | IT/Technik-Team | Wartbare Systeme, gute Tools, stabile Infrastruktur   |
 
-Funktionale Ziele:
+**Funktionale Ziele**
 
 | Modul         | Ziel                                                         |
 | ------------- | ------------------------------------------------------------ |
@@ -52,15 +52,69 @@ Funktionale Ziele:
 
 ### Lösungssuche und -bewertung
 
+Hier werden zwei verschiedene Lösungsansätze aufgeführt und bewertet
+
+#### 1. Abbildung in Excel
+
+Eine Excel-Datei mit drei Blättern:
+
+1. Finanzmodul
+   Kreditoren und Debitoren werden erfasst und jede Bestellung wird genau dokumentiert. Es können Diagramme daraus generiert werden.
+2. Lagermodul
+   Jeder Artikel wird mit Lagerort aufgeführt.
+3. Einkaufsmodul
+   Lieferanten werden aufgeführt. Alle Bestellungen (Einkäufe) werden dokumentiert.
+
+**Vorteile**:
+
+- sehr simpel
+- keine Programmierkenntnisse nötig
+- einfach wartbar
+
+**Nachteile**:
+
+- Sicherheit nicht gewährleistet
+- Einträge können willkürlich verändert werden
+- nicht zeitgemäss
+- Auswertungen eingeschränkt
+- Logik und GUI nicht trennbar
+
+#### 2. Umsetzung mit relationaler Datenbank (mssql)
+
+Eine genauerer Umsetzungsplan müsste mit einem ERM erstellt werden. Deshalb hier nur grob und stichwortartig. Beziehungen werden typisch relational mit Primär- und Fremdschlüssel verwaltet.
+
+1. Finanzmodul
+   Kreditoren, Debitoren sowie Bestellungen werden als eigene Tabellen erfasst. Umsätze können genau ausgewertet werden
+2. Lagermodul
+   Lagerbestand, Lagerort und Artikel werden als eigene Tabellen erfasst. Lagerbestände können genau ausgewertet werden
+3. Einkaufsmodul
+   Lieferanten werden als Tabelle geführt
+
+**Vorteile**:
+
+- ausbaufähig
+- skalierbar
+- grosse Sicherheit kann realisiert werden
+- Geschäftslogik gut abbildbar
+
+**Nachteile**:
+
+- Programmierkenntnisse nötig
+- je nachdem höhere Wartbarkeit
+
+#### Entscheid
+
+Wenn die Vor- und Nachteile der jeweiligen Lösungen gegeneinander abgewogen werden, entscheiden wir uns klar für die Umsetzung mit einer relationalen Datenbank.
+
 ### Planung und Controlling
 
 | Aktivität                        | Soll-Datum | Ist-Datum  | Delta | Erklärung                       |
 | -------------------------------- | ---------- | ---------- | ----- | ------------------------------- |
 | Planung erstellen                | 19.06.2025 | 19.06.2025 | 0     | alles klar                      |
 | ERM erstellen                    | 19.06.2025 | 26.06.2025 | 7     | bisschen komplexer als erwartet |
-| Situationsanalyse                | 03.07.2025 |            |       |                                 |
-| Zielsetzungen                    | 03.07.2025 |            |       |                                 |
-| PM Lösungssuche und -bewertung   | 03.07.2025 |            |       |                                 |
+| Situationsanalyse                | 03.07.2025 | 03.07.2025 | 0     | gut vorwärts gekommen           |
+| Zielsetzungen                    | 03.07.2025 | 03.07.2025 | 0     | gut vorwärts gekommen           |
+| PM Lösungssuche und -bewertung   | 03.07.2025 | 03.07.2025 | 0     | gut vorwärts gekommen           |
 | Earned Value Analyse             | 03.07.2025 |            |       |                                 |
 | Planung Zusammenspiel Code / SQL | 14.08.2025 |            |       |                                 |
 | Erste Umsetzung                  | 04.09.2025 |            |       |                                 |
