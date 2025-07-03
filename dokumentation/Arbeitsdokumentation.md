@@ -102,7 +102,7 @@ Eine genauerer Umsetzungsplan müsste mit einem ERM erstellt werden. Deshalb hie
 - Programmierkenntnisse nötig
 - je nachdem höhere Wartbarkeit
 
-#### Entscheid
+### Umsetzungsentscheid
 
 Wenn die Vor- und Nachteile der jeweiligen Lösungen gegeneinander abgewogen werden, entscheiden wir uns klar für die Umsetzung mit einer relationalen Datenbank.
 
@@ -269,6 +269,7 @@ erDiagram
     }
 
     Bestellposition {
+        int BestellpositionID PK
         int BestellungsID FK
         int ArtikelID FK
         int Menge
