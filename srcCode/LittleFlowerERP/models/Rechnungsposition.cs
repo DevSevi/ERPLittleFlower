@@ -18,5 +18,6 @@ public class Rechnungsposition
     [ForeignKey("RechnungID")]
     public Rechnung Rechnung { get; set; } = new Rechnung();
 
-    public List<Artikel> Artikel { get; set; } = new List<Artikel>();
+    [ForeignKey("ArtikelID")]
+    public Artikel Artikel { get; set; } = new Artikel();
 }

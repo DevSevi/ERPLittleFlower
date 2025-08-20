@@ -7,7 +7,7 @@ namespace LittleFlowerERP.Models;
 public class Bestellung
 {
     public int BestellungID { get; set; }
-    public int LieferantenID { get; set; }
+    public int LieferantID { get; set; }
     public DateTime Bestelldatum { get; set; } = DateTime.Now;
     public string Status { get; set; } = "Offen";
 

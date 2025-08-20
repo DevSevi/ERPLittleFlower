@@ -18,3 +18,10 @@ Erweiterungen DB:
 dotnet ef migrations add TEXT
 dotnet ef database update
 ```
+
+migration nicht durchführen
+
+```zsh
+dotnet ef migrations remove
+
+```

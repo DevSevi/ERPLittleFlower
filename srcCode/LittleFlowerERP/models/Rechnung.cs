@@ -14,7 +14,7 @@ public class Rechnung
     public int Mahnstufe { get; set; } = 0;
 
     // Navigation property to Kunde
-    [ForeignKey("KundeId")]
+    [ForeignKey("KundeID")]
     public Kunde Kunde { get; set; } = null!;
 
     public List<Rechnungsposition> Rechnungspositionen { get; set; } = new List<Rechnungsposition>();

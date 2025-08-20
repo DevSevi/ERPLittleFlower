@@ -116,7 +116,7 @@ Wenn die Vor- und Nachteile der jeweiligen Lösungen gegeneinander abgewogen wer
 | Zielsetzungen                    | 03.07.2025 | 03.07.2025 | 0     | gut vorwärts gekommen           |
 | PM Lösungssuche und -bewertung   | 03.07.2025 | 03.07.2025 | 0     | gut vorwärts gekommen           |
 | Earned Value Analyse             | 03.07.2025 |            |       |                                 |
-| Planung Zusammenspiel Code / SQL | 14.08.2025 |            |       |                                 |
+| Planung Zusammenspiel Code / SQL | 14.08.2025 | 20.8.25    | 6     | länger gebraucht                |
 | Erste Umsetzung                  | 04.09.2025 |            |       |                                 |
 | Verbesserungen                   | 11.09.2025 |            |       |                                 |
 | Dokumentation nachführen         | 18.09.2025 |            |       |                                 |

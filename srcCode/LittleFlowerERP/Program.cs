@@ -1,2 +1,14 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using LittleFlowerERP.Models;
+using Microsoft.EntityFrameworkCore;
+using var db = new LittleFlowerContext();
+
+var KundenMitRechnung = db.Kunden
+    .Include(k => k.Rechnungen)
+    .ThenInclude(r => r.Rechnungspositionen)
+    .ToList();
+
+
+foreach (var k in KundenMitRechnung)
+{
+    Console.WriteLine($"{k.Name} hat {k.Rechnungen.Count} Rechnungen");
+}

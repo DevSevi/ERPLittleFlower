@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LittleFlowerERP.Migrations
 {
     [DbContext(typeof(LittleFlowerContext))]
-    partial class LittleFlowerContextModelSnapshot : ModelSnapshot
+    [Migration("20250820163144_addModels")]
+    partial class addModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,6 +23,21 @@ namespace LittleFlowerERP.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("ArtikelRechnungsposition", b =>
+                {
+                    b.Property<int>("ArtikelID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RechnungspositionenRechnungspositionID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ArtikelID", "RechnungspositionenRechnungspositionID");
+
+                    b.HasIndex("RechnungspositionenRechnungspositionID");
+
+                    b.ToTable("ArtikelRechnungsposition");
+                });
 
             modelBuilder.Entity("LittleFlowerERP.Models.Artikel", b =>
                 {
@@ -269,11 +287,24 @@ namespace LittleFlowerERP.Migrations
 
                     b.HasKey("RechnungspositionID");
 
-                    b.HasIndex("ArtikelID");
-
                     b.HasIndex("RechnungID");
 
                     b.ToTable("Rechnungsposition");
+                });
+
+            modelBuilder.Entity("ArtikelRechnungsposition", b =>
+                {
+                    b.HasOne("LittleFlowerERP.Models.Artikel", null)
+                        .WithMany()
+                        .HasForeignKey("ArtikelID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LittleFlowerERP.Models.Rechnungsposition", null)
+                        .WithMany()
+                        .HasForeignKey("RechnungspositionenRechnungspositionID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("LittleFlowerERP.Models.Bestellposition", b =>
@@ -338,19 +369,11 @@ namespace LittleFlowerERP.Migrations
 
             modelBuilder.Entity("LittleFlowerERP.Models.Rechnungsposition", b =>
                 {
-                    b.HasOne("LittleFlowerERP.Models.Artikel", "Artikel")
-                        .WithMany("Rechnungspositionen")
-                        .HasForeignKey("ArtikelID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("LittleFlowerERP.Models.Rechnung", "Rechnung")
                         .WithMany("Rechnungspositionen")
                         .HasForeignKey("RechnungID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Artikel");
 
                     b.Navigation("Rechnung");
                 });
@@ -360,8 +383,6 @@ namespace LittleFlowerERP.Migrations
                     b.Navigation("Bestellpositionen");
 
                     b.Navigation("Lagerbestände");
-
-                    b.Navigation("Rechnungspositionen");
                 });
 
             modelBuilder.Entity("LittleFlowerERP.Models.Bestellung", b =>
