@@ -16,4 +16,5 @@ public class Artikel
 
     public List<Rechnungsposition> Rechnungspositionen { get; set; } = new List<Rechnungsposition>();
     public List<Lagerbestand> Lagerbestände { get; set; } = new List<Lagerbestand>();
+    public List<Bestellposition> Bestellpositionen { get; set; } = new List<Bestellposition>();
 }

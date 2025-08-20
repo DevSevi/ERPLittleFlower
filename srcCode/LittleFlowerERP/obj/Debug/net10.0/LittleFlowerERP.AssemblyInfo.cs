@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LittleFlowerERP")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e5af1a6543bc76fc43a9a28a9e2e8a71b89b634a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1cdcba1bc7e9739575955f249f583420be7b0318")]
 [assembly: System.Reflection.AssemblyProductAttribute("LittleFlowerERP")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LittleFlowerERP")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
