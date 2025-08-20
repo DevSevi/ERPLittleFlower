@@ -20,7 +20,9 @@
           "net10.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/bvxP9ZPbF2pYcjX8noGbCCRj58yPzC3bl5iwDbK4s4JuNMnMZS/api": {},
+          "https://nuget.pkg.github.com/CMInformatik/index.json": {}
         },
         "frameworks": {
           "net10.0": {

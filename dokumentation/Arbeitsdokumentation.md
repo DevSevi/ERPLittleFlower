@@ -251,6 +251,7 @@ erDiagram
         date Rechnungsdatum
         boolean Bezahlt
         int Mahnstufe
+        float Gesamtpreis
     }
 
     Rechnungsposition {
