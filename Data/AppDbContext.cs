@@ -26,8 +26,15 @@ namespace ERPLittleFlowerBlazor.Data
             base.OnModelCreating(modelBuilder);
 
             // Mapping zu den Tabellen in der DB
-            modelBuilder.Entity<Kunde>().ToTable("Kunden");
-            modelBuilder.Entity<Rechnung>().ToTable("Rechnung"); // Name exakt wie in der DB
+            modelBuilder.Entity<Artikel>().ToTable("Artikel");
+            modelBuilder.Entity<Bestellposition>().ToTable("Bestellposition");
+            modelBuilder.Entity<Bestellung>().ToTable("Bestellung");
+            //modelBuilder.Entity<Kunde>().ToTable("Kunde");
+            modelBuilder.Entity<Lagerbestand>().ToTable("Lagerbestand");
+            modelBuilder.Entity<Lagerort>().ToTable("Lagerort");
+            //modelBuilder.Entity<Lieferant>().ToTable("Lieferant");
+            modelBuilder.Entity<Rechnung>().ToTable("Rechnung");
+            modelBuilder.Entity<Rechnungsposition>().ToTable("Rechnungsposition");
         }
     }
 }

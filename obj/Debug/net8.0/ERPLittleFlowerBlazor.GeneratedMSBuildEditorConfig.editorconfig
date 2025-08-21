@@ -46,6 +46,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTGllZmVyYW50ZW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/severinkiener/src/ERPLittleFlower/ERPLittleFlower/Pages/Rechnungsdetail.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVjaG51bmdzZGV0YWlsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/severinkiener/src/ERPLittleFlower/ERPLittleFlower/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
