@@ -1,0 +1,50 @@
+@page "/lieferanten"
+@using LittleFlowerERP.Models
+@using Microsoft.EntityFrameworkCore
+@inject ERPLittleFlowerBlazor.Data.AppDbContext _context
+
+<h3>Lieferanten</h3>
+
+@if (lieferanten == null)
+{
+    <p><em>Lade Lieferanten...</em></p>
+}
+else if (!lieferanten.Any())
+{
+    <p><em>Keine Lieferanten vorhanden.</em></p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Adresse</th>
+                <th>Email</th>
+                <th>Telefonnummer</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var l in lieferanten)
+            {
+                <tr>
+                    <td>@l.LieferantID</td>
+                    <td>@l.Name</td>
+                    <td>@l.Adresse</td>
+                    <td>@l.Email</td>
+                    <td>@l.Telefonnummer</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Lieferant>? lieferanten;
+
+    protected override async Task OnInitializedAsync()
+    {
+        lieferanten = await _context.Lieferanten.ToListAsync();
+    }
+}

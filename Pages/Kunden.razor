@@ -1,0 +1,50 @@
+@page "/kunden"
+@using LittleFlowerERP.Models
+@using Microsoft.EntityFrameworkCore
+@inject ERPLittleFlowerBlazor.Data.AppDbContext _context
+
+<h3>Kunden</h3>
+
+@if (kunden == null)
+{
+    <p><em>Lade Kunden...</em></p>
+}
+else if (!kunden.Any())
+{
+    <p><em>Keine Kunden vorhanden.</em></p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Adresse</th>
+                <th>Email</th>
+                <th>Telefonnummer</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var k in kunden)
+            {
+                <tr>
+                    <td>@k.KundeID</td>
+                    <td>@k.Name</td>
+                    <td>@k.Adresse</td>
+                    <td>@k.Email</td>
+                    <td>@k.Telefonnummer</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Kunde>? kunden;
+
+    protected override async Task OnInitializedAsync()
+    {
+        kunden = await _context.Kunden.ToListAsync();
+    }
+}
