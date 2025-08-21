@@ -20,5 +20,14 @@ namespace ERPLittleFlowerBlazor.Data
         {
             get; set;
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Mapping zu den Tabellen in der DB
+            modelBuilder.Entity<Kunde>().ToTable("Kunden");
+            modelBuilder.Entity<Rechnung>().ToTable("Rechnung"); // Name exakt wie in der DB
+        }
     }
 }

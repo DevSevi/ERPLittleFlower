@@ -1,8 +1,0 @@
-/Users/severinkiener/src/ERPLittleFlower/ERPLittleFlowerBlazor/obj/Debug/net7.0/ERPLittleFlowerBlazor.csproj.AssemblyReference.cache
-/Users/severinkiener/src/ERPLittleFlower/ERPLittleFlowerBlazor/obj/Debug/net7.0/ERPLittleFlowerBlazor.GeneratedMSBuildEditorConfig.editorconfig
-/Users/severinkiener/src/ERPLittleFlower/ERPLittleFlowerBlazor/obj/Debug/net7.0/ERPLittleFlowerBlazor.AssemblyInfoInputs.cache
-/Users/severinkiener/src/ERPLittleFlower/ERPLittleFlowerBlazor/obj/Debug/net7.0/ERPLittleFlowerBlazor.AssemblyInfo.cs
-/Users/severinkiener/src/ERPLittleFlower/ERPLittleFlowerBlazor/obj/Debug/net7.0/ERPLittleFlowerBlazor.csproj.CoreCompileInputs.cache
-/Users/severinkiener/src/ERPLittleFlower/ERPLittleFlowerBlazor/obj/Debug/net7.0/ERPLittleFlowerBlazor.MvcApplicationPartsAssemblyInfo.cache
-/Users/severinkiener/src/ERPLittleFlower/ERPLittleFlowerBlazor/obj/Debug/net7.0/ERPLittleFlowerBlazor.RazorAssemblyInfo.cache
-/Users/severinkiener/src/ERPLittleFlower/ERPLittleFlowerBlazor/obj/Debug/net7.0/ERPLittleFlowerBlazor.RazorAssemblyInfo.cs

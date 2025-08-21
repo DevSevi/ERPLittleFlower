@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ERPLittleFlowerBlazor")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e4b8df2aa4d14523e4d650402cfb1b97c450cce5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+33345e6a35879f60b9f90ffa98dc26c6609e2569")]
 [assembly: System.Reflection.AssemblyProductAttribute("ERPLittleFlowerBlazor")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ERPLittleFlowerBlazor")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

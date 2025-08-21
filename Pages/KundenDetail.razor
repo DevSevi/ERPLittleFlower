@@ -1,0 +1,52 @@
+@page "/kunde/{KundeID:int}"
+
+@using LittleFlowerERP.Models
+@using Microsoft.EntityFrameworkCore
+@inject ERPLittleFlowerBlazor.Data.AppDbContext _context
+
+<h3>Rechnungen von Kunde @KundeID</h3>
+
+@if (rechnungen == null)
+{
+    <p><em>Lädt...</em></p>
+}
+else if (!rechnungen.Any())
+{
+    <p>Keine Rechnungen gefunden.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>RechnungID</th>
+                <th>Datum</th>
+                <th>Summe</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var r in rechnungen)
+            {
+                <tr>
+                    <td>@r.RechnungID</td>
+                    <td>@r.Rechnungsdatum.ToShortDateString()</td>
+                    <td>@r.Gesamtpreis</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    [Parameter]
+    public int KundeID { get; set; }
+
+    private List<Rechnung> rechnungen = new List<Rechnung>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        rechnungen = await _context.Rechnungen
+        .Where(r => r.KundeID == KundeID)
+        .ToListAsync();
+    }
+}

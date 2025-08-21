@@ -1,4 +1,5 @@
 @page "/kunden"
+@using ERPLittleFlowerBlazor.Data
 @using LittleFlowerERP.Models
 @using Microsoft.EntityFrameworkCore
 @inject ERPLittleFlowerBlazor.Data.AppDbContext _context
@@ -7,33 +8,33 @@
 
 @if (kunden == null)
 {
-    <p><em>Lade Kunden...</em></p>
+    <p><em>Lädt...</em></p>
 }
 else if (!kunden.Any())
 {
-    <p><em>Keine Kunden vorhanden.</em></p>
+    <p>Keine Kunden vorhanden.</p>
 }
 else
 {
-    <table class="table table-striped">
+    <table class="table">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>KundenID</th>
                 <th>Name</th>
                 <th>Adresse</th>
-                <th>Email</th>
                 <th>Telefonnummer</th>
+                <th>Email</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var k in kunden)
             {
-                <tr>
+                <tr @onclick="() => NavigateToKunde(k.KundeID)" style="cursor:pointer">
                     <td>@k.KundeID</td>
                     <td>@k.Name</td>
                     <td>@k.Adresse</td>
-                    <td>@k.Email</td>
                     <td>@k.Telefonnummer</td>
+                    <td>@k.Email</td>
                 </tr>
             }
         </tbody>
@@ -41,10 +42,21 @@ else
 }
 
 @code {
-    private List<Kunde>? kunden;
+    private List<Kunde> kunden = new List<Kunde>();
+
+    [Inject]
+    private AppDbContext Db { get; set; }
+
+    [Inject]
+    private NavigationManager Nav { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        kunden = await _context.Kunden.ToListAsync();
+        kunden = await Db.Kunden.ToListAsync();
+    }
+
+    private void NavigateToKunde(int kundenID)
+    {
+        Nav.NavigateTo($"/kunde/{kundenID}");
     }
 }
