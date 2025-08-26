@@ -10,7 +10,7 @@ public class Artikel
     public int LagerbestandID { get; set; }
     public string Bezeichnung { get; set; } = string.Empty;
     public string Beschreibung { get; set; } = string.Empty;
-    public float Verkaufspreis { get; set; }
+     public float Verkaufspreis { get; set; }
     public float Einkaufspreis { get; set; }
     public string Einheit { get; set; } = string.Empty;
 

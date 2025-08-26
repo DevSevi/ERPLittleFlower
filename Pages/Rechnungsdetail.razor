@@ -1,4 +1,4 @@
-@page "/bla/{KundeID:int}/{RechnungID:int}"
+@page "/kunde/{KundeID:int}/rechnung/{RechnungID:int}"
 
 @using LittleFlowerERP.Models
 @using Microsoft.EntityFrameworkCore
@@ -19,20 +19,20 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>RechnungID</th>
                 <th>Artikel</th>
                 <th>Einzelpreis</th>
                 <th>Menge</th>
+                <th>RechnungspositionID</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var r in rechnungspositionen)
             {
                 <tr>
-                    <td>@r.RechnungID</td>
-                    <td>@r.Artikel</td>
+                    <td>@r.Artikel.Beschreibung</td>
                     <td>@r.Einzelpreis</td>
                     <td>@r.Menge</td>
+                    <td>@r.RechnungspositionID</td>
                 </tr>
             }
         </tbody>
@@ -41,14 +41,17 @@ else
 
 @code {
     [Parameter]
-    public int RechnungspositionID { get; set; }
+    public int RechnungID { get; set; }
+    [Parameter]
+    public int KundeID { get; set; }
 
     private List<Rechnungsposition> rechnungspositionen = new List<Rechnungsposition>();
 
     protected override async Task OnInitializedAsync()
     {
         rechnungspositionen = await _context.Rechnungspositionen
-        .Where(r => r.RechnungspositionID == RechnungspositionID)
+        .Include(r => r.Artikel)
+        .Where(r => r.RechnungID == RechnungID)
         .ToListAsync();
     }
 }

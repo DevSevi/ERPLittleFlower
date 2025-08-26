@@ -3,6 +3,7 @@
 @using LittleFlowerERP.Models
 @using Microsoft.EntityFrameworkCore
 @inject ERPLittleFlowerBlazor.Data.AppDbContext _context
+@inject NavigationManager Nav
 
 <h3>Rechnungen von Kunde @KundeID</h3>
 
@@ -27,7 +28,7 @@ else
         <tbody>
             @foreach (var r in rechnungen)
             {
-                <tr>
+                <tr @onclick="() => NavigateToRechnung(r.RechnungID)" style="cursor:pointer">
                     <td>@r.RechnungID</td>
                     <td>@r.Rechnungsdatum.ToShortDateString()</td>
                     <td>@r.Gesamtpreis</td>
@@ -36,10 +37,14 @@ else
         </tbody>
     </table>
 }
+<button type="button" class="btn btn-danger mt-3" @onclick="DeleteKunde">
+    Kunde löschen
+</button>
 
 @code {
     [Parameter]
     public int KundeID { get; set; }
+    private Kunde? kunde;
 
     private List<Rechnung> rechnungen = new List<Rechnung>();
 
@@ -48,5 +53,26 @@ else
         rechnungen = await _context.Rechnungen
         .Where(r => r.KundeID == KundeID)
         .ToListAsync();
+    }
+
+    private void NavigateToRechnung(int RechnungID)
+    {
+        Nav.NavigateTo($"/kunde/{KundeID}/rechnung/{RechnungID}");
+    }
+
+    private async Task DeleteKunde()
+    {
+        if (kunde != null)
+        {
+            _context.Kunden.Remove(kunde);
+            await _context.SaveChangesAsync();
+
+            // Nach dem Löschen zurück zur Kundenliste
+            Nav.NavigateTo("/kunden");
+        }
+        else
+        {
+            Console.WriteLine("Kunde nicht gefunden!");
+        }
     }
 }

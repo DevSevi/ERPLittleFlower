@@ -1,0 +1,65 @@
+@page "/kunden/neu"
+
+@using LittleFlowerERP.Models
+@inject ERPLittleFlowerBlazor.Data.AppDbContext _context
+@inject NavigationManager Nav
+
+<h3>Neuen Kunden anlegen</h3>
+
+<EditForm Model="@kunde" OnValidSubmit="HandleValidSubmit" OnFieldChanged="OnFieldChanged">
+    <DataAnnotationsValidator />
+
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <InputText class="form-control" @bind-Value="kunde.Name" />
+        <ValidationMessage For="@(() => kunde.Name)" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Adresse</label>
+        <InputText class="form-control" @bind-Value="kunde.Adresse" />
+        <ValidationMessage For="@(() => kunde.Adresse)" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <InputText class="form-control" @bind-Value="kunde.Email" />
+        <ValidationMessage For="@(() => kunde.Email)" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Telefonnummer</label>
+        <InputText class="form-control" @bind-Value="kunde.Telefonnummer" />
+        <ValidationMessage For="@(() => kunde.Telefonnummer)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary" disabled="@(!isValid)">Speichern</button>
+    <button type="button" class="btn btn-secondary" @onclick="@(() => Nav.NavigateTo("/kunden"))">Abbrechen</button>
+</EditForm>
+
+@code {
+    private Kunde kunde = new();
+    private EditContext editContext;
+    private bool isValid = false;
+
+    protected override void OnInitialized()
+    {
+        editContext = new EditContext(kunde);
+        editContext.OnFieldChanged += (_, __) => ValidateForm();
+        ValidateForm();
+    }
+    private async Task HandleValidSubmit()
+    {
+        _context.Kunden.Add(kunde);
+        await _context.SaveChangesAsync();
+
+        // zurück zur Kundenliste
+        Nav.NavigateTo("/kunden");
+    }
+
+    private void ValidateForm()
+    {
+        isValid = editContext.Validate();
+        StateHasChanged(); // zwingt UI zum Aktualisieren
+    }
+}
