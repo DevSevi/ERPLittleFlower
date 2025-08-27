@@ -1,0 +1,96 @@
+@page "/artikel/{ArtikelID:int}"
+
+@using LittleFlowerERP.Models
+@using Microsoft.EntityFrameworkCore
+@inject ERPLittleFlowerBlazor.Data.AppDbContext _context
+@inject NavigationManager Nav
+
+<h3>Übersicht Artikel @ArtikelID</h3>
+<h6>@artikel?.Beschreibung</h6>
+
+@if (artikel == null)
+{
+    <p><em>Lädt...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>LagerbestandID</th>
+                <th>Lagerort</th>
+                <th>Menge</th>
+                <th>Letzte Inventur</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var l in lagerbestaende)
+            {
+                <tr>
+                    <td>@l.LagerbestandID</td>
+                    <td>@l.Lagerort.Bezeichnung</td>
+                    <td>@l.Menge</td>
+                    <td>@l.LetzteInventur.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<button type="button" class="btn btn-danger mt-3" @onclick="DeleteArtikel">
+    Artikel löschen
+</button>
+
+@code {
+    [Parameter]
+    public int ArtikelID { get; set; }
+    private Artikel? artikel;
+
+    private List<Lagerbestand> lagerbestaende = new List<Lagerbestand>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Kunde laden
+        artikel = await _context.Artikelliste
+        .FirstOrDefaultAsync(a => a.ArtikelID == ArtikelID);
+
+        // Lagerbestände laden
+        lagerbestaende = await _context.Lagerbestaende
+        .Where(l => l.ArtikelID == ArtikelID)
+        .ToListAsync();
+
+        // Artikel laden
+        artikel = await _context.Artikelliste
+        .FirstOrDefaultAsync(a => a.ArtikelID == ArtikelID);
+
+        // Lagerort laden
+        if (lagerbestaende.Count() > 0)
+        {
+            foreach (var l in lagerbestaende)
+            {
+                l.Lagerort = await _context.Lagerorte
+                .FirstOrDefaultAsync(lo => lo.LagerortID == l.LagerortID);
+            }
+        }
+    }
+
+    private void NavigateToLagerbestand(int LagerbestandID)
+    {
+        Nav.NavigateTo($"/artikel/{ArtikelID}/lagerbestand/{LagerbestandID}");
+    }
+
+    private async Task DeleteArtikel()
+    {
+        if (artikel != null)
+        {
+            _context.Artikelliste.Remove(artikel);
+            await _context.SaveChangesAsync();
+
+            // Nach dem Löschen zurück zur Artikelliste
+            Nav.NavigateTo("/artikel");
+        }
+        else
+        {
+            Console.WriteLine("Kunde nicht gefunden!");
+        }
+    }
+}

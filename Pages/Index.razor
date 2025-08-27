@@ -1,9 +1,67 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+@using LittleFlowerERP.Models
+@using Microsoft.EntityFrameworkCore
+@inject ERPLittleFlowerBlazor.Data.AppDbContext _context
 
-<h1>Hello, world!</h1>
+<h3>Dashboard</h3>
 
-Welcome to your new app.
+@if (isLoading)
+{
+    <p>Lade Daten...</p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card text-center bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Kunden</h5>
+                    <p class="card-text display-6">@kundenCount</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Rechnungen</h5>
+                    <p class="card-text display-6">@rechnungenCount</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Artikel</h5>
+                    <p class="card-text display-6">@artikelCount</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Gesamtumsatz</h5>
+                    <p class="card-text display-6">@gesamtumsatz.ToString("C")</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code {
+    private int kundenCount;
+    private int rechnungenCount;
+    private int artikelCount;
+    private decimal gesamtumsatz;
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        kundenCount = await _context.Kunden.CountAsync();
+        rechnungenCount = await _context.Rechnungen.CountAsync();
+        artikelCount = await _context.Artikelliste.CountAsync();
+        gesamtumsatz = await _context.Rechnungen.SumAsync(r => r.Gesamtpreis);
+
+        isLoading = false;
+    }
+}

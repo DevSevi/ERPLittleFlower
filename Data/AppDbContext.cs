@@ -8,7 +8,7 @@ namespace ERPLittleFlowerBlazor.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         // DbSets für deine Tabellen:
-        public DbSet<Artikel> Artikel { get; set; }
+        public DbSet<Artikel> Artikelliste { get; set; }
         public DbSet<Bestellposition> Bestellpositionen { get; set; }
         public DbSet<Bestellung> Bestellungen { get; set; }
         public DbSet<Kunde> Kunden { get; set; }

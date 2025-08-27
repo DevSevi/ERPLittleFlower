@@ -50,6 +50,11 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        // Kunde laden
+        kunde = await _context.Kunden
+        .FirstOrDefaultAsync(k => k.KundeID == KundeID);
+
+        // Rechnungen laden
         rechnungen = await _context.Rechnungen
         .Where(r => r.KundeID == KundeID)
         .ToListAsync();
