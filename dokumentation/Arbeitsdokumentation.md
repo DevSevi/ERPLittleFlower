@@ -108,19 +108,18 @@ Wenn die Vor- und Nachteile der jeweiligen Lösungen gegeneinander abgewogen wer
 
 ### Planung und Controlling
 
-| Aktivität                        | Soll-Datum | Ist-Datum  | Delta | Erklärung                       |
-| -------------------------------- | ---------- | ---------- | ----- | ------------------------------- |
-| Planung erstellen                | 19.06.2025 | 19.06.2025 | 0     | alles klar                      |
-| ERM erstellen                    | 19.06.2025 | 26.06.2025 | 7     | bisschen komplexer als erwartet |
-| Situationsanalyse                | 03.07.2025 | 03.07.2025 | 0     | gut vorwärts gekommen           |
-| Zielsetzungen                    | 03.07.2025 | 03.07.2025 | 0     | gut vorwärts gekommen           |
-| PM Lösungssuche und -bewertung   | 03.07.2025 | 03.07.2025 | 0     | gut vorwärts gekommen           |
-| Earned Value Analyse             | 03.07.2025 |            |       |                                 |
-| Planung Zusammenspiel Code / SQL | 14.08.2025 | 20.8.25    | 6     | länger gebraucht                |
-| Erste Umsetzung                  | 04.09.2025 |            |       |                                 |
-| Verbesserungen                   | 11.09.2025 |            |       |                                 |
-| Dokumentation nachführen         | 18.09.2025 |            |       |                                 |
-| Abgabe                           | 25.09.2025 |            |       |                                 |
+| Aktivität                        | Soll-Datum | Ist-Datum  | Delta | Erklärung                                       |
+| -------------------------------- | ---------- | ---------- | ----- | ----------------------------------------------- |
+| Planung erstellen                | 19.06.2025 | 19.06.2025 | 0     | alles klar                                      |
+| ERM erstellen                    | 19.06.2025 | 26.06.2025 | 7     | bisschen komplexer als erwartet                 |
+| Situationsanalyse                | 03.07.2025 | 03.07.2025 | 0     | gut vorwärts gekommen                           |
+| Zielsetzungen                    | 03.07.2025 | 03.07.2025 | 0     | gut vorwärts gekommen                           |
+| PM Lösungssuche und -bewertung   | 03.07.2025 | 03.07.2025 | 0     | gut vorwärts gekommen                           |
+| Planung Zusammenspiel Code / SQL | 14.08.2025 | 20.8.2025  | 6     | länger gebraucht                                |
+| Erste Umsetzung                  | 04.09.2025 | 27.08.2025 | -7    | aufgrund Motivationsschub gut vorwärts gekommen |
+| Verbesserungen                   | 11.09.2025 |            |       |                                                 |
+| Dokumentation nachführen         | 18.09.2025 |            |       |                                                 |
+| Abgabe                           | 25.09.2025 |            |       |                                                 |
 
 ### Gantt-Diagramm
 
@@ -138,7 +137,6 @@ gantt
     Situationsanalyse                :plan4, 2025-07-03, 7d
     Zielsetzungen                    :plan4, 2025-07-03, 7d
     PM Lösungssuche und -bewertung  :plan5, 2025-07-03, 7d
-    Earned Value Analyse             :plan6, 2025-07-03, 7d
 
     section Umsetzung
     Planung Code/SQL                 :plan7, 2025-08-14, 7d
