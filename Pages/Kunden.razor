@@ -46,10 +46,10 @@ else
     private List<Kunde> kunden = new List<Kunde>();
 
     [Inject]
-    private AppDbContext Db { get; set; }
+    private AppDbContext Db { get; set; } = null!;
 
     [Inject]
-    private NavigationManager Nav { get; set; }
+    private NavigationManager Nav { get; set; } = null!;
 
     protected override async Task OnInitializedAsync()
     {

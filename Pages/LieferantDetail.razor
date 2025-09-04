@@ -1,0 +1,64 @@
+@page "/lieferanten/{LieferantID:int}"
+
+@using LittleFlowerERP.Models
+@using Microsoft.EntityFrameworkCore
+@inject ERPLittleFlowerBlazor.Data.AppDbContext _context
+@inject NavigationManager Nav
+
+<h3>Bestellungen Lieferant @LieferantID</h3>
+
+@if (bestellungen == null)
+{
+    <p><em>Lädt...</em></p>
+}
+else if (!bestellungen.Any())
+{
+    <p>Keine Bestellungen gefunden.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>BestellungID</th>
+                <th>Bestelldatum</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var b in bestellungen)
+            {
+                <tr @onclick="() => NavigateToBestellung(b.BestellungID)" style="cursor:pointer">
+                    <td>@b.BestellungID</td>
+                    <td>@b.Bestelldatum.ToShortDateString()</td>
+                    <td>@b.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    [Parameter]
+    public int LieferantID { get; set; }
+    private Lieferant? lieferant;
+
+    private List<Bestellung> bestellungen = new List<Bestellung>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Kunde laden
+        lieferant = await _context.Lieferanten
+        .FirstOrDefaultAsync(l => l.LieferantID == LieferantID);
+
+        // Rechnungen laden
+        bestellungen = await _context.Bestellungen
+        .Where(b => b.LieferantID == LieferantID)
+        .ToListAsync();
+    }
+
+    private void NavigateToBestellung(int BestellungID)
+    {
+        Nav.NavigateTo($"/lieferanten/{LieferantID}/bestellungen/{BestellungID}");
+    }
+}

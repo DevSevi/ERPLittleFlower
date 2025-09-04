@@ -34,6 +34,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXJ0aWtlbGxpc3RlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/severinkiener/src/ERPLittleFlower/ERPLittleFlower/Pages/Bestellungsdetail.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQmVzdGVsbHVuZ3NkZXRhaWwucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/severinkiener/src/ERPLittleFlower/ERPLittleFlower/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -52,6 +56,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/severinkiener/src/ERPLittleFlower/ERPLittleFlower/Pages/KundeNeu.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvS3VuZGVOZXUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/severinkiener/src/ERPLittleFlower/ERPLittleFlower/Pages/LagerortDetail.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTGFnZXJvcnREZXRhaWwucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/severinkiener/src/ERPLittleFlower/ERPLittleFlower/Pages/Lagerorte.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTGFnZXJvcnRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/severinkiener/src/ERPLittleFlower/ERPLittleFlower/Pages/LieferantDetail.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTGllZmVyYW50RGV0YWlsLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/severinkiener/src/ERPLittleFlower/ERPLittleFlower/Pages/Lieferanten.razor]

@@ -1,0 +1,63 @@
+@page "/lieferanten/{LieferantID:int}/bestellungen/{BestellungID:int}"
+
+@using LittleFlowerERP.Models
+@using Microsoft.EntityFrameworkCore
+@inject ERPLittleFlowerBlazor.Data.AppDbContext _context
+
+<h3>Bestellungsdetail </h3>
+
+@if (bestellpositionen == null)
+{
+    <p><em>Lädt...</em></p>
+}
+else if (!bestellpositionen.Any())
+{
+    <p>Keine Bestellungen gefunden.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Artikel</th>
+                <th>Menge</th>
+                <th>Preis</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var b in bestellpositionen)
+            {
+                <tr @onclick="() => NavigateToArtikel(b.ArtikelID)" style="cursor:pointer">
+                    <td>@b.Artikel.Beschreibung</td>
+                    <td>@b.Menge</td>
+                    <td>@b.Preis</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    [Parameter]
+    public int BestellungID { get; set; }
+    [Parameter]
+    public int LieferantID { get; set; }
+
+    private List<Bestellposition> bestellpositionen = new List<Bestellposition>();
+
+    [Inject]
+    private NavigationManager Nav { get; set; } = null!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        bestellpositionen = await _context.Bestellpositionen
+        .Include(b => b.Artikel)
+        .Where(b => b.BestellungID == BestellungID)
+        .ToListAsync();
+    }
+
+    private void NavigateToArtikel(int ArtikelID)
+    {
+        Nav.NavigateTo($"/artikel/{ArtikelID}");
+    }
+}

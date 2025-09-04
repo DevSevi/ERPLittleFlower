@@ -1,0 +1,58 @@
+@page "/lagerorte"
+@using ERPLittleFlowerBlazor.Data
+@using LittleFlowerERP.Models
+@using Microsoft.EntityFrameworkCore
+@inject ERPLittleFlowerBlazor.Data.AppDbContext _context
+
+<h3>Lagerorte</h3>
+
+@if (lagerorte == null)
+{
+    <p><em>Lädt...</em></p>
+}
+else if (!lagerorte.Any())
+{
+    <p>Keine Lagerorte vorhanden.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>LagerortID</th>
+                <th>Bezeichnung</th>
+                <th>Standort</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var l in lagerorte)
+            {
+                <tr @onclick="() => NavigateToLagerort(l.LagerortID)" style="cursor:pointer">
+                    <td>@l.LagerortID</td>
+                    <td>@l.Bezeichnung</td>
+                    <td>@l.Standort</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Lagerort> lagerorte = new List<Lagerort>();
+
+    [Inject]
+    private AppDbContext Db { get; set; } = null!;
+
+    [Inject]
+    private NavigationManager Nav { get; set; } = null!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        lagerorte = await Db.Lagerorte.ToListAsync();
+    }
+
+    private void NavigateToLagerort(int LagerortID)
+    {
+        Nav.NavigateTo($"/lagerorte/{LagerortID}");
+    }
+}

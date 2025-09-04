@@ -28,7 +28,7 @@ else
         <tbody>
             @foreach (var r in rechnungspositionen)
             {
-                <tr>
+                <tr @onclick="() => NavigateToArtikel(r.ArtikelID)" style="cursor:pointer">
                     <td>@r.Artikel.Beschreibung</td>
                     <td>@r.Einzelpreis</td>
                     <td>@r.Menge</td>
@@ -47,11 +47,19 @@ else
 
     private List<Rechnungsposition> rechnungspositionen = new List<Rechnungsposition>();
 
+    [Inject]
+    private NavigationManager Nav { get; set; } = null!;
+
     protected override async Task OnInitializedAsync()
     {
         rechnungspositionen = await _context.Rechnungspositionen
         .Include(r => r.Artikel)
         .Where(r => r.RechnungID == RechnungID)
         .ToListAsync();
+    }
+
+    private void NavigateToArtikel(int ArtikelID)
+    {
+        Nav.NavigateTo($"/artikel/{ArtikelID}");
     }
 }

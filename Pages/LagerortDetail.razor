@@ -1,0 +1,74 @@
+@page "/lagerorte/{LagerortID:int}"
+
+@using LittleFlowerERP.Models
+@using Microsoft.EntityFrameworkCore
+@inject ERPLittleFlowerBlazor.Data.AppDbContext _context
+@inject NavigationManager Nav
+
+<h3>Übersicht LAGERORT @LagerortID</h3>
+<h6>@lagerort?.Bezeichnung</h6>
+
+@if (lagerbestaende == null)
+{
+    <p><em>Lädt...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Menge</th>
+                <th>Artikel</th>
+                <th>Letzte Inventur</th>
+                <th>LagerbestandID</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var l in lagerbestaende)
+            {
+                <tr>
+                    <td>@l.Menge</td>
+                    <td>@l.Artikel.Beschreibung</td>
+                    <td>@l.LetzteInventur.ToShortDateString()</td>
+                    <td>@l.LagerbestandID</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    [Parameter]
+    public int LagerortID { get; set; }
+    private Lagerort? lagerort;
+
+    private List<Lagerbestand> lagerbestaende = new List<Lagerbestand>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Kunde laden
+        lagerort = await _context.Lagerorte
+        .FirstOrDefaultAsync(l => l.LagerortID == LagerortID);
+
+        // Lagerbestände laden
+        lagerbestaende = await _context.Lagerbestaende
+        .Where(l => l.LagerortID == LagerortID)
+        .ToListAsync();
+
+        // Artikel laden
+        foreach (var lb in lagerbestaende)
+        {
+            var artikel = await _context.Artikelliste
+            .FirstOrDefaultAsync(a => a.ArtikelID == lb.ArtikelID);
+            if (artikel != null)
+            {
+                lb.Artikel = artikel;
+            }
+        }
+    }
+
+    /*private void NavigateToLagerbestand(int LagerbestandID)
+    {
+    Nav.NavigateTo($"/artikel/{ArtikelID}/lagerbestand/{LagerbestandID}");
+    }*/
+}

@@ -17,12 +17,13 @@ Ein erster Entwurf des Ablaufs der Arbeit sieht folgendermassen aus:
    2.2 Zielsetzungen (Stakeholder und funktional)
    2.3 Lösungssuche und -bewertung (eingeschränkt)
    2.4 Planung und Controlling (Earned Value Analyse)
-3. Umsetzung in SQL-Server
+3. Anforderungsanalyse / Testfälle
+4. Umsetzung in SQL-Server
    3.1 Datenbank und Tabellen inkl. Pkeys und Fkeys
    3.2 Triggers?
-4. Umsetzung in Konsolen-App
+5. Umsetzung in Konsolen-App
    4.1 Verbindung zu DB wie?
-5. GUI
+6. GUI
    5.1 evtl. mit Blazor?
 
 ### Situationsanalyse LittleFlower

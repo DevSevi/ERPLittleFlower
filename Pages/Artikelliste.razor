@@ -47,10 +47,10 @@ else
     private List<Artikel> artikel = new List<Artikel>();
 
     [Inject]
-    private AppDbContext Db { get; set; }
+    private AppDbContext Db { get; set; } = null!;
 
     [Inject]
-    private NavigationManager Nav { get; set; }
+    private NavigationManager Nav { get; set; } = null!;
 
     protected override async Task OnInitializedAsync()
     {
