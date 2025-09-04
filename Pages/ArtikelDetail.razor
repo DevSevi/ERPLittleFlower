@@ -67,8 +67,12 @@ else
         {
             foreach (var l in lagerbestaende)
             {
-                l.Lagerort = await _context.Lagerorte
+                var lagerort = await _context.Lagerorte
                 .FirstOrDefaultAsync(lo => lo.LagerortID == l.LagerortID);
+                if (lagerort != null)
+                {
+                    l.Lagerort = lagerort;
+                }
             }
         }
     }
