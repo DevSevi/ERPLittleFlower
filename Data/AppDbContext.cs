@@ -29,7 +29,7 @@ namespace ERPLittleFlowerBlazor.Data
             modelBuilder.Entity<Artikel>().ToTable("Artikel");
             modelBuilder.Entity<Bestellposition>().ToTable("Bestellposition");
             modelBuilder.Entity<Bestellung>().ToTable("Bestellung");
-            //modelBuilder.Entity<Kunde>().ToTable("Kunde");
+            modelBuilder.Entity<Kunde>().ToTable(tb => tb.HasTrigger("trg_Kunden_History"));
             modelBuilder.Entity<Lagerbestand>().ToTable("Lagerbestand");
             modelBuilder.Entity<Lagerort>().ToTable("Lagerort");
             //modelBuilder.Entity<Lieferant>().ToTable("Lieferant");

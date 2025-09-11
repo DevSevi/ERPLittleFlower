@@ -1,4 +1,4 @@
-# Arbeitsdokumentation
+# Projektarbeit ERP LittleFlower
 
 In dieser Arbeit geht es darum, ein ERP-System aufzubauen, inkl. ERM-Modellierung, Aufbau Datenbank in SQL-Server und Umsetzung mit Testfällen. Allenfalls werde ich gegen Schluss auch noch ein einfaches GUI dazu programmieren. Der Fokus liegt jedoch klar auf dem Aufbau der Datenbank und der Dokumentation.
 
@@ -8,23 +8,23 @@ In dieser Arbeit geht es darum, ein ERP-System aufzubauen, inkl. ERM-Modellierun
 
 Ein erster Entwurf des Ablaufs der Arbeit sieht folgendermassen aus:
 
-1. ERM
-   1.1 Leistungsflussdiagramm
-   1.2 Korrelationsmatrix
-   1.3 Modell
-2. Projektmanagement
-   2.1 Situationsanalyse
-   2.2 Zielsetzungen (Stakeholder und funktional)
-   2.3 Lösungssuche und -bewertung (eingeschränkt)
-   2.4 Planung und Controlling (Earned Value Analyse)
-3. Anforderungsanalyse / Testfälle
-4. Umsetzung in SQL-Server
-   3.1 Datenbank und Tabellen inkl. Pkeys und Fkeys
-   3.2 Triggers?
-5. Umsetzung in Konsolen-App
-   4.1 Verbindung zu DB wie?
-6. GUI
-   5.1 evtl. mit Blazor?
+- ERM
+  - Leistungsflussdiagramm
+  - Korrelationsmatrix
+  - Modell
+- Projektmanagement
+  - Situationsanalyse
+  - Zielsetzungen (Stakeholder und funktional)
+  - Lösungssuche und -bewertung (eingeschränkt)
+  - Planung und Controlling (Earned Value Analyse)
+- Anforderungsanalyse / Testfälle
+- Umsetzung in SQL-Server
+  - Datenbank und Tabellen inkl. Pkeys und Fkeys
+  - Triggers?
+- Umsetzung in Konsolen-App
+  - 4.1 Verbindung zu DB wie?
+- GUI
+  - evtl. mit Blazor?
 
 ### Situationsanalyse LittleFlower
 
@@ -149,6 +149,27 @@ gantt
     Abgabe                           :plan11, 2025-09-25, 7d
 ```
 
+## Anforderungsanalyse / Testfälle
+
+| Use Case            | Include                       | Positiv                           | Negativ              | ETW (1-5) | Effekt (1-5) | RPN | Testfall                                                                                                                       |
+| ------------------- | ----------------------------- | --------------------------------- | -------------------- | --------- | ------------ | --- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Umsatz prüfen       | Umsatz pro Artikel generieren | Umsatzzahlen (Total) sind korrekt | Umsatz stimmt nicht  | 3         | 4            | 12  | Es werden N = 20 Artikelbestellungen generiert und das Total manuell ausgerechnet - dieses muss mit dem System übereinstimmen. |
+| Lagerbestand prüfen | Lagerbestand prüfen           | Lagerbestand stimmt               | Bestand stimmt nicht | 3         | 5            | 15  | Es werden N = 30 Bestellungen aufgebgeben und N = 20 Rechnungen generiert. Der Lagerbestand muss danach aufgehen.              |
+
+**ETW**
+1 = sehr unwahrscheinlich
+2 = unwahrscheinlich
+3 = möglich
+4 = gelegentlich
+5 = häufig
+
+**Ausmass**
+1 = kaum bemerkbar
+2 = bemerkbar
+3 = störend
+4 = stark störend
+5 = katastrophal
+
 ## ERM
 
 ### Leistungsflussdiagramm
@@ -192,7 +213,7 @@ flowchart TD
 
 ### ERD
 
-evtl. noch vereinfachen
+Hier sind die Entitäten und Abhängigkeiten aufgeführt.
 
 ```mermaid
 erDiagram
@@ -276,3 +297,43 @@ erDiagram
         float Preis
     }
 ```
+
+## Konkrete Umsetzung
+
+### Datenbank
+
+Ich habe mich für die Umsetzung mit Entity Framework entschieden, was heisst, dass ich die Tabellen im SQL-Server nicht selber baue, sondern diese aus meinem Model, welches ich in C# schreibe, automatisch generiert wird (siehe nächster Punkt). Dabei war vor allem wichtig, dass keine n:n Beziehungen vorkommen, da diese nicht in der Datenbank abgebildet werden können.
+
+#### Triggers
+
+Am Schluss hatte ich noch Zeit, einen Trigger einzubauen, damit ich eine Kunden-History habe. Dabei musste ich diese Info im AppDbContext noch aufnehmen:
+
+```csharp
+modelBuilder.Entity<Kunde>().ToTable(tb => tb.HasTrigger("trg_Kunden_History"));
+```
+
+### Code
+
+Wie bereits erwähnt, habe ich für Entity Framework die Klassen gemäss ERD abgebildet, damit aus diesen automatisch Tabellen generiert werden.
+
+Ich habe mich nach dem Aufbau der Klassen entschieden, ein GUI mit Blazor zu bauen, statt mit einer Konsolenapp weiterzufahren. Aufgebaut ist das nach MVC folgendermassen:
+
+#### Model
+
+Klassen gemäss ERD
+
+#### View
+
+Hauptsächlich unter "Pages" zu finden. Dort wird jeweils mit HTML das Design festgelegt.
+
+#### Control
+
+Direkt in den "Pages" unter "Code" zu finden. Somit gibt es eine relativ einfache und praktische Kopplung zwischen View und Control.
+
+#### Beispieldaten
+
+Um meine Lösung auszutesten und validieren zu können, habe ich Testdaten mit ChatGPT generiert - dabei wurden z.B.
+
+## Fazit
+
+Das war eine spannende Projektarbeit, um konkret ein Anwendungsbeispiel für Datenbanken zu haben. Auch für mich persönlich war es eine spannende Gelegenheit, mal eine Applikation mit allem drum und dran (Planung, Datenbank, Code etc.) zu schreiben.
