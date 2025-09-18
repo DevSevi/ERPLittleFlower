@@ -118,8 +118,8 @@ Wenn die Vor- und Nachteile der jeweiligen Lösungen gegeneinander abgewogen wer
 | PM Lösungssuche und -bewertung   | 03.07.2025 | 03.07.2025 | 0     | gut vorwärts gekommen                           |
 | Planung Zusammenspiel Code / SQL | 14.08.2025 | 20.8.2025  | 6     | länger gebraucht                                |
 | Erste Umsetzung                  | 04.09.2025 | 27.08.2025 | -7    | aufgrund Motivationsschub gut vorwärts gekommen |
-| Verbesserungen                   | 11.09.2025 |            |       |                                                 |
-| Dokumentation nachführen         | 18.09.2025 |            |       |                                                 |
+| Verbesserungen                   | 11.09.2025 | 11.09.2025 | 0     | gut vorwärts gekommen                           |
+| Dokumentation nachführen         | 18.09.2025 | 18.09.2025 | 0     | nicht mehr viel anzupassen                      |
 | Abgabe                           | 25.09.2025 |            |       |                                                 |
 
 ### Gantt-Diagramm
@@ -337,3 +337,9 @@ Um meine Lösung auszutesten und validieren zu können, habe ich Testdaten mit C
 ## Fazit
 
 Das war eine spannende Projektarbeit, um konkret ein Anwendungsbeispiel für Datenbanken zu haben. Auch für mich persönlich war es eine spannende Gelegenheit, mal eine Applikation mit allem drum und dran (Planung, Datenbank, Code etc.) zu schreiben.
+
+### Lessons learnt
+
+- Zusammenhänge DB & Code verstehen
+- Umfangreiche Vorarbeit hilft bei Umsetzung
+- Dokumentation braucht Zeit
