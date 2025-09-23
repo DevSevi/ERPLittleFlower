@@ -20,6 +20,8 @@ else
                 <th>LagerbestandID</th>
                 <th>Lagerort</th>
                 <th>Menge</th>
+                <th>Einkaufspreis</th>
+                <th>Verkaufspreis</th>
                 <th>Letzte Inventur</th>
             </tr>
         </thead>
@@ -30,11 +32,31 @@ else
                     <td>@l.LagerbestandID</td>
                     <td>@l.Lagerort.Bezeichnung</td>
                     <td>@l.Menge</td>
+                    <td>@artikel.Einkaufspreis.ToString("C")</td>
+                    <td>@artikel.Verkaufspreis.ToString("C")</td>
                     <td>@l.LetzteInventur.ToShortDateString()</td>
                 </tr>
             }
         </tbody>
     </table>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card text-center bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Artikelumsatz</h5>
+                    <p class="card-text display-6">@artikelUmsatz.ToString("C")</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Artikel verkauft</h5>
+                    <p class="card-text display-6">@artikelVerkauft.ToString()</p>
+                </div>
+            </div>
+        </div>
+    </div>
 }
 <button type="button" class="btn btn-danger mt-3" @onclick="DeleteArtikel">
     Artikel löschen
@@ -44,6 +66,8 @@ else
     [Parameter]
     public int ArtikelID { get; set; }
     private Artikel? artikel;
+    private float artikelUmsatz;
+    private int artikelVerkauft;
 
     private List<Lagerbestand> lagerbestaende = new List<Lagerbestand>();
 
@@ -61,6 +85,16 @@ else
         // Artikel laden
         artikel = await _context.Artikelliste
         .FirstOrDefaultAsync(a => a.ArtikelID == ArtikelID);
+
+        // Umsatz laden
+        artikelUmsatz = await _context.Rechnungspositionen
+        .Where(rp => rp.ArtikelID == ArtikelID)
+        .SumAsync(rp => rp.Einzelpreis * rp.Menge);
+
+        // Verkauft laden
+        artikelVerkauft = await _context.Rechnungspositionen
+        .Where(rp => rp.ArtikelID == ArtikelID)
+        .SumAsync(rp => rp.Menge);
 
         // Lagerort laden
         if (lagerbestaende.Count() > 0)

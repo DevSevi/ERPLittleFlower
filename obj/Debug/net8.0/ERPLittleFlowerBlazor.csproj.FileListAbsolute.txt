@@ -73,3 +73,5 @@
 /Users/severinkiener/src/ERPLittleFlower/ERPLittleFlower/obj/Debug/net8.0/ERPLittleFlowerBlazor.pdb
 /Users/severinkiener/src/ERPLittleFlower/ERPLittleFlower/obj/Debug/net8.0/ERPLittleFlowerBlazor.genruntimeconfig.cache
 /Users/severinkiener/src/ERPLittleFlower/ERPLittleFlower/obj/Debug/net8.0/ref/ERPLittleFlowerBlazor.dll
+/Users/severinkiener/src/ERPLittleFlower/ERPLittleFlower/bin/Debug/net8.0/dokumentation/technisch/GeneratePDF/package-lock.json
+/Users/severinkiener/src/ERPLittleFlower/ERPLittleFlower/bin/Debug/net8.0/dokumentation/technisch/GeneratePDF/package.json

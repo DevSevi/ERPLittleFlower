@@ -1,0 +1,18 @@
+{
+  "name": "generatepdf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "markdown-it": "^14.1.0",
+    "markdown-it-table-of-contents": "^1.0.0",
+    "puppeteer": "^24.22.0"
+  }
+}
