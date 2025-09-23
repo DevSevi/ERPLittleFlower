@@ -120,7 +120,7 @@ Wenn die Vor- und Nachteile der jeweiligen Lösungen gegeneinander abgewogen wer
 | Erste Umsetzung                  | 04.09.2025 | 27.08.2025 | -7    | aufgrund Motivationsschub gut vorwärts gekommen |
 | Verbesserungen                   | 11.09.2025 | 11.09.2025 | 0     | gut vorwärts gekommen                           |
 | Dokumentation nachführen         | 18.09.2025 | 18.09.2025 | 0     | nicht mehr viel anzupassen                      |
-| Abgabe                           | 25.09.2025 |            |       |                                                 |
+| Abgabe                           | 25.09.2025 | 23.9.2025  | -2    | Abgabe, da Präsentation bereits am 24.9.        |
 
 ### Gantt-Diagramm
 
