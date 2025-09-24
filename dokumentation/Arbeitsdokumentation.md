@@ -151,10 +151,10 @@ gantt
 
 ## Anforderungsanalyse / Testfälle
 
-| Use Case            | Include                       | Positiv                           | Negativ              | ETW (1-5) | Effekt (1-5) | RPN | Testfall                                                                                                                       |
-| ------------------- | ----------------------------- | --------------------------------- | -------------------- | --------- | ------------ | --- | ------------------------------------------------------------------------------------------------------------------------------ |
-| Umsatz prüfen       | Umsatz pro Artikel generieren | Umsatzzahlen (Total) sind korrekt | Umsatz stimmt nicht  | 3         | 4            | 12  | Es werden N = 20 Artikelbestellungen generiert und das Total manuell ausgerechnet - dieses muss mit dem System übereinstimmen. |
-| Lagerbestand prüfen | Lagerbestand prüfen           | Lagerbestand stimmt               | Bestand stimmt nicht | 3         | 5            | 15  | Es werden N = 30 Bestellungen aufgebgeben und N = 20 Rechnungen generiert. Der Lagerbestand muss danach aufgehen.              |
+| Use Case            | Include                       | Positiv                           | Negativ              | ETW (1-5) | Effekt (1-5) | RPN | Testfall                                                                                                                                                   |
+| ------------------- | ----------------------------- | --------------------------------- | -------------------- | --------- | ------------ | --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Umsatz prüfen       | Umsatz pro Artikel generieren | Umsatzzahlen (Total) sind korrekt | Umsatz stimmt nicht  | 3         | 4            | 12  | Es werden N = 20 Artikelbestellungen generiert und das Total manuell ausgerechnet - dieses muss mit dem System übereinstimmen.                             |
+| Lagerbestand prüfen | Lagerbestand prüfen           | Lagerbestand stimmt               | Bestand stimmt nicht | 3         | 5            | 15  | Es wird ein Artikel mit Lagerbestand N = 10 angelegt, anschliesssend Bestellung von 3 Stück und Rechnung von 2 Stück. Anschliessend muss Bestand aufgehen. |
 
 **ETW**
 1 = sehr unwahrscheinlich
@@ -169,6 +169,19 @@ gantt
 3 = störend
 4 = stark störend
 5 = katastrophal
+
+### Testfall 1
+
+1. Lege 20 Artikelbestellungen im System an
+2. Ermittle den erwarteten Gesamtumsatz manuell (Summe aller Verkaufspreise x Menge)
+3. Rufe im System die Umsatzanzeige pro Artikel auf
+4. Vergleiche den angezeigten UMsatz mit dem manuell berechneten Wert.
+
+### Testfall 2
+
+1. Lege einen Artikel mit Lagerbestand 10 an
+2. Erstelle eine Bestellung über 3 Stück dieses Artikels
+   -> Erwartung: Lagerbestand beträgt danach 5.
 
 ## ERM
 
@@ -332,7 +345,7 @@ Direkt in den "Pages" unter "Code" zu finden. Somit gibt es eine relativ einfach
 
 #### Beispieldaten
 
-Um meine Lösung auszutesten und validieren zu können, habe ich Testdaten mit ChatGPT generiert - dabei wurden z.B.
+Um meine Lösung auszutesten und validieren zu können, habe ich Testdaten mit ChatGPT generiert - dabei wurden z.B. 100 Kunden, 200 Rechnungen und 20 Bestellungen generiert. Das war praktisch, um die Applikation testen zu können.
 
 ## Fazit
 
