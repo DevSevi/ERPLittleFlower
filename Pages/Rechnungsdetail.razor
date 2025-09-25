@@ -22,6 +22,7 @@ else
                 <th>Artikel</th>
                 <th>Einzelpreis</th>
                 <th>Menge</th>
+                <th>Gesamtpreis</th>
                 <th>RechnungspositionID</th>
             </tr>
         </thead>
@@ -32,6 +33,7 @@ else
                     <td>@r.Artikel.Beschreibung</td>
                     <td>@r.Einzelpreis</td>
                     <td>@r.Menge</td>
+                    <td>@(r.Menge* r.Einzelpreis)</td>
                     <td>@r.RechnungspositionID</td>
                 </tr>
             }

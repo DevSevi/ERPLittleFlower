@@ -42,14 +42,14 @@ Die Firma LittleFlower hat ihren Fokus und ihre Stärke ganz klar auf der kreati
 
 **Funktionale Ziele**
 
-| Modul         | Ziel                                                         |
-| ------------- | ------------------------------------------------------------ |
-| Finanzmodul   | Kreditoren und Debitoren können erfasst und verwaltet werden |
-| Finanzmodul   | Umsatz pro Artikel kann generiert werden                     |
-| Lagermodul    | Lagerort kann definiert werden                               |
-| Lagermodul    | Lagermenge pro Artikel kann verwaltet werden                 |
-| Einkaufsmodul | Lieferanten können verwaltet werden                          |
-| Einkaufsmodul | Artikelbestellungen können verwaltet werden                  |
+| Modul         | Ziel                                                         | Wichtigkeit |
+| ------------- | ------------------------------------------------------------ | ----------- |
+| Finanzmodul   | Kreditoren und Debitoren können erfasst und verwaltet werden | Muss        |
+| Finanzmodul   | Umsatz pro Artikel kann generiert werden                     | Muss        |
+| Lagermodul    | Lagerort kann definiert werden                               | Muss        |
+| Lagermodul    | Lagermenge pro Artikel kann verwaltet werden                 | Muss        |
+| Einkaufsmodul | Lieferanten können verwaltet werden                          | Muss        |
+| Einkaufsmodul | Artikelbestellungen können verwaltet werden                  | Muss        |
 
 ### Lösungssuche und -bewertung
 
@@ -170,18 +170,22 @@ gantt
 4 = stark störend
 5 = katastrophal
 
-### Testfall 1
+### Ablauf Testfall 1
 
 1. Lege 20 Artikelbestellungen im System an
 2. Ermittle den erwarteten Gesamtumsatz manuell (Summe aller Verkaufspreise x Menge)
 3. Rufe im System die Umsatzanzeige pro Artikel auf
 4. Vergleiche den angezeigten UMsatz mit dem manuell berechneten Wert.
 
-### Testfall 2
+-> Testfall 1 wurde erfüllt
+
+### Ablauf Testfall 2
 
 1. Lege einen Artikel mit Lagerbestand 10 an
 2. Erstelle eine Bestellung über 3 Stück dieses Artikels
-   -> Erwartung: Lagerbestand beträgt danach 5.
+3. Erwartung: Lagerbestand beträgt danach 5.
+
+-> Testfall 2 wurde erfüllt
 
 ## ERM
 
@@ -312,6 +316,15 @@ erDiagram
 ```
 
 ## Konkrete Umsetzung
+
+```mermaid
+flowchart TD
+    A[Client / Browser<br/>Blazor] --> B[Controller<br/>Blazor Server]
+    B --> C[Model<br/>Blazor Server]
+    C --> DB[(Database<br/>MSSQL)]
+    B --> E[View<br/>Blazor Application]
+    E --> A
+```
 
 ### Datenbank
 
