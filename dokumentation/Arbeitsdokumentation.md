@@ -183,7 +183,7 @@ gantt
 
 1. Lege einen Artikel mit Lagerbestand 10 an
 2. Erstelle eine Bestellung über 3 Stück dieses Artikels
-3. Erwartung: Lagerbestand beträgt danach 5.
+3. Erwartung: Lagerbestand beträgt danach 7.
 
 -> Testfall 2 wurde erfüllt
 
